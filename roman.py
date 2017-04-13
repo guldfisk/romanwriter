@@ -17,15 +17,15 @@ class RomanWriter:
 		(1, 'I')
 	))
 	@staticmethod
-	def roman(num):
+	def _roman(num):
 		for r in RomanWriter.romanKeys.keys():
 			x, y = divmod(num, r)
 			yield RomanWriter.romanKeys[r]*x
 			num -= (r*x)
 			if num>0:
-				RomanWriter.roman(num)
+				RomanWriter._roman(num)
 			else:
 				break
 	@staticmethod
 	def get(num):
-		return "".join([a for a in RomanWriter.roman(num)])
+		return "".join([a for a in RomanWriter._roman(num)])
